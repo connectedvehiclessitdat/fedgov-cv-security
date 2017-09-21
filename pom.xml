@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>gov.usdot</groupId>
+  <artifactId>fedgov-cv-security</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>IEEE 1609.2 Library</name>
+  <description>Provides support for working with IEEE 1609.2 Messages and CV Certificates</description>
+  	<dependencies>
+  		<!-- Dependency on private resources lib required since security lib loads certificates from file --> 
+		<dependency>
+			<groupId>gov.usdot</groupId>
+			<artifactId>fedgov-cv-private-resources</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+	  	<dependency>
+	      <groupId>org.bouncycastle</groupId>
+	      <artifactId>bcprov-jdk15on</artifactId>
+	      <version>1.51</version>
+	    </dependency>
+	   	<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency> 
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	
+	<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<configuration>
+				<doctitle>Library for working with IEEE P1609.2™/D9.3 messages and certificates</doctitle>
+				<stylesheetfile>stylesheet.css</stylesheetfile>
+				<docfilessubdirs>true</docfilessubdirs>
+				<groups>
+					<group>
+						<title>1609.2 Message signing, encoding, and parsing</title>
+						<packages>gov.usdot.cv.security.msg</packages>
+					</group>
+					<group>
+						<title>Certificates decoding and management</title>
+						<packages>gov.usdot.cv.security.cert</packages>
+					</group>
+				</groups>
+		
+			</configuration>
+			<executions>
+				<execution>
+					<id>attach-javadocs</id>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+    <plugin>
+      <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+    </plugin>		
+	</plugins>
+	</build>
+</project>
